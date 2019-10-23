@@ -10,9 +10,16 @@ import java.util.*
 import kotlin.concurrent.timer
 
 @Component
-class LocalizationService @Autowired constructor(val localizationClient: LocalizationClient) {
+class LocalizationService @Autowired constructor(
+        private val localizationClient: LocalizationClient,
+        @Value("\${graphcms.project}") private val graphcmsProject: String
+) {
 
   private var localizationData: LocalizationData? = null
+
+  private val graphcmsTextKeysQuery = GraphQLQueryWrapper(
+          "{languages {translations(where: { project: $graphcmsProject }) {text key {value}} code}}"
+  )
 
   init {
     timer("refreshLocalizations", false, 0, TEN_MINUTES_MS) {
@@ -20,7 +27,7 @@ class LocalizationService @Autowired constructor(val localizationClient: Localiz
     }
   }
 
-  fun refreshLocalizations() {
+  private fun refreshLocalizations() {
     val data = fetchLocalizations()
     if (data != localizationData) {
       synchronized(this@LocalizationService) {
@@ -42,7 +49,7 @@ class LocalizationService @Autowired constructor(val localizationClient: Localiz
 
 
   private fun fetchLocalizations(): LocalizationData =
-    localizationClient.fetchLocalization(GRAPHCMS_TEXT_KEYS_QUERY).data
+    localizationClient.fetchLocalization(graphcmsTextKeysQuery).data
 
   private fun LocalizationData.getText(language: String, key: String) =
     languages
@@ -52,13 +59,6 @@ class LocalizationService @Autowired constructor(val localizationClient: Localiz
       ?.text
 
   companion object {
-    @Value("\${graphcms.project}")
-    lateinit var graphcmsProject: String
-
-    val GRAPHCMS_TEXT_KEYS_QUERY = GraphQLQueryWrapper(
-      "{languages {translations(where: { project: $graphcmsProject }) {text key {value}} code}}"
-    )
-
     private fun parseLanguage(locale: Locale?): String {
       return when {
         locale.isLanguage(Language.ENGLISH.localeLanguage) -> Language.ENGLISH.graphCMSLanguage

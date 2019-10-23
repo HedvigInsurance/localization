@@ -1,6 +1,6 @@
 package com.hedvig.client
 
-import com.hedvig.productPricing.service.serviceIntegration.localizationService.dto.LocalizationResponse
+import com.hedvig.client.dto.LocalizationResponse
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
