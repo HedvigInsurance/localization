@@ -2,7 +2,7 @@ package com.hedvig.service
 
 import com.hedvig.client.GraphQLQueryWrapper
 import com.hedvig.client.LocalizationClient
-import com.hedvig.productPricing.service.serviceIntegration.localizationService.dto.LocalizationData
+import com.hedvig.client.dto.LocalizationData
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component

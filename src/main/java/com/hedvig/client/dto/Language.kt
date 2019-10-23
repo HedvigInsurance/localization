@@ -1,6 +1,6 @@
-package com.hedvig.productPricing.service.serviceIntegration.localizationService.dto
+package com.hedvig.client.dto
 
 data class Language(
-  val translations: List<Translation>,
-  val code: String
+    val translations: List<Translation>,
+    val code: String
 )

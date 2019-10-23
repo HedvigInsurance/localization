@@ -1,6 +1,6 @@
-package com.hedvig.productPricing.service.serviceIntegration.localizationService.dto
+package com.hedvig.client.dto
 
 data class Translation(
-  val key: Key?,
-  val text: String
+    val key: Key?,
+    val text: String
 )
