@@ -82,6 +82,7 @@ class LocalizationService @Autowired constructor(
 
   private enum class Language(val localeLanguage: String, val graphCMSLanguage: String, val fileIdentifier: String) {
     ENGLISH("en", "en_SE", " (English)"),
-    SWEDISH("sv", "sv_SE", "")
+    SWEDISH("sv", "sv_SE", ""),    
+    NORWEGIAN("nb", "nb_NO", "")
   }
 }
