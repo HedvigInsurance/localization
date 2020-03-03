@@ -1,4 +1,4 @@
-package com.hedvig.client
+package com.hedvig.localization.client
 
 data class GraphQLQueryWrapper(
     val query: String,

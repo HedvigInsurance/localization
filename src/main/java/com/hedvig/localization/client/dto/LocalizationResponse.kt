@@ -1,4 +1,4 @@
-package com.hedvig.client.dto
+package com.hedvig.localization.client.dto
 
 data class LocalizationResponse(
     val data: LocalizationData

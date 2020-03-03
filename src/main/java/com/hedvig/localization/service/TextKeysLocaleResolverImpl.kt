@@ -1,13 +1,13 @@
-package com.hedvig.service
+package com.hedvig.localization.service
 
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import java.util.*
 
 @Component
-class TextKeysLocaleResolver {
+class TextKeysLocaleResolverImpl : TextKeysLocaleResolver {
 
-  fun resolveLocale(acceptLanguage: String?): Locale {
+  override fun resolveLocale(acceptLanguage: String?): Locale {
     if (acceptLanguage.isNullOrBlank()) {
       return DEFAULT_LOCALE
     }
