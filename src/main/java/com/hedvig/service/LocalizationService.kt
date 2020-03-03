@@ -59,18 +59,14 @@ class LocalizationService @Autowired constructor(
       ?.text
 
   companion object {
-    private fun parseLanguage(locale: Locale?): String {
-      return when {
-        locale.isLanguage(Language.ENGLISH.localeLanguage) -> Language.ENGLISH.graphCMSLanguage
-        locale.isLanguage(Language.SWEDISH.localeLanguage) -> Language.SWEDISH.graphCMSLanguage
-        else -> Language.SWEDISH.graphCMSLanguage
-      }
-    }
+    private fun parseLanguage(locale: Locale?): String = locale?.toString() ?: Language.SWEDISH.graphCMSLanguage
 
+    @Deprecated("This kind of lookup should not be part of this library")
     fun getFileIdentifier(locale: Locale?): String =
       when {
         locale.isLanguage(Language.ENGLISH.localeLanguage) -> Language.ENGLISH.fileIdentifier
         locale.isLanguage(Language.SWEDISH.localeLanguage) -> Language.SWEDISH.fileIdentifier
+        locale.isLanguage(Language.NORWEGIAN.localeLanguage) -> Language.SWEDISH.fileIdentifier
         else -> Language.SWEDISH.fileIdentifier
       }
 
@@ -82,7 +78,7 @@ class LocalizationService @Autowired constructor(
 
   private enum class Language(val localeLanguage: String, val graphCMSLanguage: String, val fileIdentifier: String) {
     ENGLISH("en", "en_SE", " (English)"),
-    SWEDISH("sv", "sv_SE", ""),    
+    SWEDISH("sv", "sv_SE", ""),
     NORWEGIAN("nb", "nb_NO", "")
   }
 }

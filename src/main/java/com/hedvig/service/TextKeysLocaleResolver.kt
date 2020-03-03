@@ -23,11 +23,13 @@ class TextKeysLocaleResolver {
 
   companion object {
     private val LOCALES = listOf(
-      Locale("en"),
-      Locale("sv")
+      Locale("en", "se"),
+      Locale("sv", "se"),
+      Locale("nb", "no"),
+      Locale("en", "no")
     )
 
-    val DEFAULT_LOCALE = Locale("sv")
+    val DEFAULT_LOCALE = Locale("sv", "se")
     val log = LoggerFactory.getLogger(this::class.java)
   }
 }
