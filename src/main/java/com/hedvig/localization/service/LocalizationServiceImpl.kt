@@ -10,7 +10,7 @@ import java.util.*
 import kotlin.concurrent.timer
 
 @Component
-class LocalizationServiceImp @Autowired constructor(
+class LocalizationServiceImpl @Autowired constructor(
         private val localizationClient: LocalizationClient,
         @Value("\${graphcms.project}") private val graphcmsProject: String
 ) : LocalizationService {
@@ -25,14 +25,14 @@ class LocalizationServiceImp @Autowired constructor(
     timer("refreshLocalizations", false, 0,
       TEN_MINUTES_MS
     ) {
-      this@LocalizationServiceImp.refreshLocalizations()
+      this@LocalizationServiceImpl.refreshLocalizations()
     }
   }
 
   private fun refreshLocalizations() {
     val data = fetchLocalizations()
     if (data != localizationData) {
-      synchronized(this@LocalizationServiceImp) {
+      synchronized(this@LocalizationServiceImpl) {
         localizationData = data
       }
     }
