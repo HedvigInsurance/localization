@@ -37,7 +37,7 @@ internal class LocalizationTest {
         val resolver = TextKeysLocaleResolverImpl()
         val locale = resolver.resolveLocale("sv-se")
         val localizationService =
-            LocalizationServiceImp(localizationClient, "someProject")
+            LocalizationServiceImpl(localizationClient, "someProject")
 
         val result = localizationService.getText(locale, "SOME_KEY_NAME")
 
@@ -74,7 +74,7 @@ internal class LocalizationTest {
         val resolver = TextKeysLocaleResolverImpl()
         val locale = resolver.resolveLocale("nb-NO")
         val localizationService =
-            LocalizationServiceImp(localizationClient, "someProject")
+            LocalizationServiceImpl(localizationClient, "someProject")
 
         val result = localizationService.getText(locale, "SOME_KEY_NAME")
 

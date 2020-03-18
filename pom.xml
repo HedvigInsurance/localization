@@ -6,7 +6,7 @@
 
     <groupId>com.hedvig.localization</groupId>
     <artifactId>localization</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
 
     <properties>
         <java.version>1.8</java.version>
@@ -61,6 +61,7 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
@@ -72,6 +73,7 @@
             <groupId>io.mockk</groupId>
             <artifactId>mockk</artifactId>
             <version>1.9.3</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
